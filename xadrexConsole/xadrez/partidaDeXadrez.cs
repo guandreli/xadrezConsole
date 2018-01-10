@@ -24,7 +24,11 @@ namespace xadrez {
         public void executaMovimento(Posicao origem, Posicao destino) {
             Peca p = tab.retirarPeca(origem);
             if(p == null) {
-                throw new tabuleiroException("Não existe peça nessa posição " + (origem.coluna) + (8 - origem.linha));
+                char c = 'a';
+                for (int i = 0; i < origem.coluna; i++) {
+                    c++;
+                }
+                throw new tabuleiroException("Não existe peça nessa posição " + (c) + (8 - origem.linha));
             }
             p.incrementarQtdMovimentos();
             Peca pecaCapturada = tab.retirarPeca(destino);
