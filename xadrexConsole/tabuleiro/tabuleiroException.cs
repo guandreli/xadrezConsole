@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace tabuleiro {
-    class tabuleiroException : Exception {
-        public tabuleiroException(string msg) : base(msg) {
+    class TabuleiroException : Exception {
+        public TabuleiroException(string msg) : base(msg) {
         }
     }
 }
