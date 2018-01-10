@@ -9,21 +9,22 @@ using xadrez;
 namespace xadrexConsole {
     class Program {
         static void Main(string[] args) {
-            Tabuleiro tab = new Tabuleiro(8, 8);
-            posicaoXadrez pos = new posicaoXadrez('c', 7);
 
             try {
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(4, 2));
-                tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(1, 6));
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(4, 6));
-                tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(4, 4));
-                tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(1, 2));
+                PartidaDeXadrez partida = new PartidaDeXadrez();
+                while(!partida.terminada) {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
 
+                    Console.Write("\n\nOrigem: ");
+                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                Tela.imprimirTabuleiro(tab);
+                    partida.executaMovimento(origem, destino);
+                }
             }
-            catch(tabuleiroException e) {
+            catch (tabuleiroException e) {
                 Console.WriteLine(e.Message);
             }
 
